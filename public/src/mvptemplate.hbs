@@ -1,0 +1,80 @@
+<h3>DPS players</h3>
+<div id="offense-mvp">
+	{{#each offense}}
+	<div class="candidate" style="background-color:#{{primaryColor}}; color: #{{secondaryColor}}">
+		<label for="{{name}}">
+			<input type="radio" name="offense" id="{{name}}" value="{{name}}">
+			<div class="candidate-data">
+				<div class="candidate-icons">
+					<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" style="stroke: #{{secondaryColor}};"/></svg>
+					<img class="candidate-headshot" src="{{headshot}}" />
+				</div>
+				<div class="candidate-details">
+					<div class="candidate-name">{{name}}</div>
+					<div class="candidate-fullname">{{player_number}} {{familyName}}, {{givenName}}</div>
+				</div>
+			</div>
+		</label>
+	</div>
+	{{/each}}
+</div>
+<h3>Tank players</h3>
+<div id="tank-mvp">
+	{{#each tank}}
+	<div class="candidate" style="background-color:#{{primaryColor}}; color: #{{secondaryColor}}">
+		<label for="{{name}}">
+			<input type="radio" name="tank" id="{{name}}" value="{{name}}">
+			<div class="candidate-data">
+				<div class="candidate-icons">
+					<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" style="stroke: #{{secondaryColor}};"/></svg>
+					<img class="candidate-headshot" src="{{headshot}}" />
+				</div>
+				<div class="candidate-details">
+					<div class="candidate-name">{{name}}</div>
+					<div class="candidate-fullname">{{player_number}} {{familyName}}, {{givenName}}</div>
+				</div>
+			</div>
+		</label>
+	</div>
+	{{/each}}
+</div>
+<h3>Flex players</h3>
+<div id="flex-mvp">
+	{{#each flex}}
+	<div class="candidate" style="background-color:#{{primaryColor}}; color: #{{secondaryColor}}">
+		<label for="{{name}}">
+			<input type="radio" name="flex" id="{{name}}" value="{{name}}">
+			<div class="candidate-data">
+				<div class="candidate-icons">
+					<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" style="stroke: #{{secondaryColor}};"/></svg>
+					<img class="candidate-headshot" src="{{headshot}}" />
+				</div>
+				<div class="candidate-details">
+					<div class="candidate-name">{{name}}</div>
+					<div class="candidate-fullname">{{player_number}} {{familyName}}, {{givenName}}</div>
+				</div>
+			</div>
+		</label>
+	</div>
+	{{/each}}
+</div>
+<h3>Support players</h3>
+<div id="support-mvp">
+	{{#each support}}
+	<div class="candidate" style="background-color:#{{primaryColor}}; color: #{{secondaryColor}}">
+		<label for="{{name}}">
+			<input type="radio" name="support" id="{{name}}" value="{{name}}">
+			<div class="candidate-data">
+				<div class="candidate-icons">
+					<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" style="stroke: #{{secondaryColor}};"/></svg>
+					<img class="candidate-headshot" src="{{headshot}}" />
+				</div>
+				<div class="candidate-details">
+					<div class="candidate-name">{{name}}</div>
+					<div class="candidate-fullname">{{player_number}} {{familyName}}, {{givenName}}</div>
+				</div>
+			</div>
+		</label>
+	</div>
+	{{/each}}
+</div>

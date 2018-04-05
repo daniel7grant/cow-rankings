@@ -1,0 +1,7 @@
+{{#each teams}}
+<div class="team" style="background-color:#{{primaryColor}}; color: #{{secondaryColor}}">
+	<img src="{{icon}}" />
+	<div class="title">{{name}}</div>
+	<input type="hidden" name="teams[]" value="{{abbreviatedName}}" />
+</div>
+{{/each}}

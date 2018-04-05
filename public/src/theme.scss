@@ -1,0 +1,226 @@
+$teamfont: 1.4em;
+$teampadd: 0.2em;
+$width: 50%;
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+body{
+	position: relative;
+	margin:0;
+	padding:0;
+}
+
+.backdrop{
+	position:absolute;
+	top:0;
+	left: 0;
+	right:0;
+	width:100%;
+	min-height: 2.5*2.5*$teamfont;
+	z-index: -1;
+
+	&.light{
+		background-color: rgb(192, 241, 253);
+	}
+	
+	&.dark{
+		background-color: rgb(114, 141, 148);
+	}
+}
+
+#container{
+	position: relative;
+	display:block;
+	width: 600px;
+	max-width: 600px;
+	min-height: 100vh;
+	margin:0 auto $teamfont auto;
+	font-family: 'Lato', sans-serif;
+	border: 1px solid rgb(114, 141, 148);
+	padding: $teamfont $teamfont 0 $teamfont;
+	border-radius: 0 0 $teamfont/2 $teamfont/2;
+
+	&.loading{
+		div.load-gif{
+			display:block;
+		}
+	
+		form{
+			display:none;
+		}
+	}
+
+	h1{
+		color: #FFFFFF;
+		margin-top:0;
+		min-height: 2.5*$teamfont;
+		vertical-align: middle;
+	}
+
+	div.load-gif{
+		display:none;
+		margin: auto;
+		text-align: center;
+
+		p{}
+
+		img{}
+	}
+
+	form{
+		display:block;
+
+		h2{
+			margin-bottom: 0.3em;
+		}
+
+		p.note{
+			color: #C0c0c0;
+			font-size: 0.9em;
+			margin: 0.5em 1em;
+		}
+
+		#teams-sortable{
+			.team{
+				display:flex;
+				align-items: center;
+				width:$width;
+				margin:0 auto $teampadd auto;
+				cursor:move;
+				font-size: $teamfont;
+				border-radius: $teampadd;
+
+				img{
+					background: rgba(255,255,255,0.8);
+					height:$teamfont - 2*$teampadd;
+					width:$teamfont - 2*$teampadd;
+					padding:$teampadd;
+					margin-left:$teampadd;
+				}
+				
+				div.title{
+					margin:0 $teampadd;
+					user-select: none;
+				}
+			}
+		}
+
+		#mvps{
+
+			#offense-mvp, #tank-mvp, #flex-mvp, #support-mvp{
+				margin:auto;
+				width:$width;
+				max-height: 7.5*(1.5*$teamfont + $teampadd);
+				overflow-y: scroll;
+			}
+
+			.candidate{
+				width:100%;
+				margin:0 auto $teampadd auto;
+				cursor:pointer;
+				border-radius: $teampadd;
+
+				input{
+					display:none;
+				}
+
+				div.candidate-data{
+					display:flex;
+					cursor:pointer;
+
+					.candidate-icons{
+						position: relative;
+						margin-left:$teampadd;
+						transition: 0.3s;
+
+						img.candidate-headshot{
+							background: rgba(255,255,255,0.8);
+							height: 2*$teamfont - 2*$teampadd;
+							width: 2*$teamfont - 2*$teampadd;
+							padding:$teampadd;
+						}
+
+						svg.checkmark{
+							position:absolute;
+							top:0;
+							left:0;
+							
+							.checkmark__check {
+								transform-origin: 50% 50%;
+								stroke-dasharray: 48;
+								stroke-dashoffset: 48;
+								stroke-width: 3px;
+								transition-delay: 0.3s;
+								transition: 0.3s;
+							  }
+						}
+
+					}
+						
+					div.candidate-details{
+						margin:0 $teampadd;
+
+						.candidate-name{
+							font-size: $teamfont;
+						}
+						.candidate-fullname{
+							font-size: 1/2*$teamfont;
+						}
+					}
+				}
+
+				input:checked{
+
+					&+div.candidate-data{
+
+						.candidate-icons{
+							transition: 0.3s;
+							padding-left:2*$teamfont+$teampadd;
+
+							svg.checkmark{
+								.checkmark__check{
+									transition-delay: 0.3s;
+									transition: 0.3s;
+									stroke-dashoffset: 0;
+								}
+							}
+						}
+
+						img.candidate-headshot{
+						}						
+					}
+				}
+
+				input:not(:checked){
+
+					// &+div.candidate-data{
+					// 	img.candidate-headshot{
+					// 		margin-left:1.5*$teamfont+$teampadd;
+					// 	}						
+					// }
+				}
+			}
+		}
+
+		input[type=submit]{
+			background:none;
+			background-color:rgb(114, 141, 148);
+			padding: $teampadd;
+			border: 0px none transparent;
+			border-radius: $teampadd;
+			box-shadow: none;
+			color:white;
+			font-size: $teamfont;
+			cursor: pointer;
+
+			&:hover{
+				background-color:rgb(72, 89, 94);
+			}
+
+		}
+
+	}
+
+
+
+}

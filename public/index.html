@@ -1,0 +1,51 @@
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		#container{
+			display:none; /*FUOC*/
+		}
+		.loading form{
+			display:none;
+		}
+		.load-gif{
+			display:none;
+			margin: auto;
+			text-align: center;
+		}
+		.loading .load-gif{
+			display:block;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="backdrop light"></div>
+	<div id="container" class="loading">
+		<div class="backdrop dark"></div>
+		<h1>r/CompetitiveOverwatch Community Power Rankings (Open Poll)</h1>
+		<div class="load-gif">
+			<p class="note">Please wait, Mr. Jeff is working behind the scenes.</p>
+			<img src="ripple.gif" />
+		</div>
+		<form method="post" action="/send" id="main-form">
+			<h2>Weekly team rankings</h2>
+			<p class="note">Reorder your ranking by dragging and dropping the teams</p>
+			<div id="teams-sortable">
+
+			</div>
+			<h2>Weekly MVPs</h2>
+			<p class="note">Choose your best player for each role</p>
+			<div id="mvps">
+
+			</div>
+			<input type="submit" value="Send">
+		</form>
+	</div>
+	
+	<script src="/dist/bundle.js"></script>
+</body>
+
+</html>
