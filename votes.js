@@ -8,32 +8,19 @@ module.exports = function(app, REST_ROUTE = '/api'){
 	REST_ROUTE += '/votes';
 
 	app.get(REST_ROUTE, function(req, res){
+		let query = {week : req.query.week, stage: req.query.stage};
+		res.setHeader('Access-Control-Allow-Origin', '*');
+		res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+		res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 		mongo.connect(murl, function(err, client){
 			const db = client.db(mdb);
 			const collection = db.collection('votes');
-			collection.find({}, { /*"projection" : {"teams": 1, "offense": 1, "tank": 1, "flex" : 1, "support": 1}*/}).toArray(function(err, result){
-				if(err) console.error(err);
-				client.close();
-				res.json(result);
-			});
+			collection.find(query, { /*"projection" : {"teams": 1, "offense": 1, "tank": 1, "flex" : 1, "support": 1, "stage": 1, "week": 1}*/})
+				.toArray(function(err, result){
+					if(err) console.error(err);
+					client.close();
+					res.json(result);
+				});
 		});
 	});
-
-	/* app.post(REST_ROUTE, function(req, res){
-		let body = req.body;
-		body.timestamp = Date.now();
-		body.ipaddress = req.get('X-Real-IP');
-		body.stage = req.query.stage || STAGE;
-		body.week = req.query.week || WEEK;
-		mongo.connect(murl, function(err, client){
-			console.log(err);
-			const db = client.db(mdb);
-			const collection = db.collection('votes');
-			collection.insert(body, function(result){
-				client.close();
-			});
-		});
-		console.log(JSON.stringify(req.body));
-		res.json(body);
-	}); */
 }
