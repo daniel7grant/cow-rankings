@@ -7,17 +7,6 @@
 		#container{
 			display:none; /*FUOC*/
 		}
-		.loading form{
-			display:none;
-		}
-		.load-gif{
-			display:none;
-			margin: auto;
-			text-align: center;
-		}
-		.loading .load-gif{
-			display:block;
-		}
 	</style>
 </head>
 
@@ -25,7 +14,10 @@
 	<div class="backdrop light"></div>
 	<div id="container" class="loading">
 		<div class="backdrop dark"></div>
-		<h1>r/CompetitiveOverwatch Community Power Rankings (Open Poll)</h1>
+		<div class="header">
+			<h1>r/CompetitiveOverwatch Community Power Rankings (Open Poll)</h1>
+			<p id="stageweek"></p>
+		</div>
 		<div class="load-gif">
 			<p class="note">Please wait, Mr. Jeff is working behind the scenes.</p>
 			<img src="ripple.gif" />
@@ -45,7 +37,7 @@
 		</form>
 	</div>
 	
-	<script src="/dist/bundle.js"></script>
+	<script src="dist/index.bundle.js"></script>
 </body>
 
 </html>

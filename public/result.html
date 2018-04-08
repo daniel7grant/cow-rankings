@@ -1,0 +1,56 @@
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		#container {
+			display: none;
+			/*FUOC*/
+		}
+	</style>
+</head>
+
+<body>
+	<div class="backdrop light"></div>
+	<div id="container" class="loading">
+		<div class="backdrop dark"></div>
+		<div class="header">
+			<h1>r/CompetitiveOverwatch Community Power Rankings (Open Poll)</h1>
+			<p id="stageweek"></p>
+		</div>
+		<div class="load-gif">
+			<p class="note">Please wait, Mr. Jeff is working behind the scenes.</p>
+			<img src="ripple.gif" />
+		</div>
+		<div id="main-form">
+			<h2>Weekly team rankings</h2>
+			<div id="teams-sortable">
+				<div class="ct-chart ct-golden-section" id="team-chart"></div>
+			</div>
+			<h2>Weekly MVPs</h2>
+			<div id="mvps">
+				<h3>DPS Players</h3>
+				<div id="offense-mvp">
+					<div class="ct-chart ct-golden-section" id="offense-chart"></div>
+				</div>
+				<h3>Tank Players</h3>
+				<div id="tank-mvp">
+					<div class="ct-chart ct-golden-section" id="tank-chart"></div>
+				</div>
+				<h3>Flex Players</h3>
+				<div id="flex-mvp">
+					<div class="ct-chart ct-golden-section" id="flex-chart"></div>
+				</div>
+				<h3>Support Players</h3>
+				<div id="support-mvp">
+					<div class="ct-chart ct-golden-section" id="support-chart"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="dist/result.bundle.js"></script>
+</body>
+
+</html>
