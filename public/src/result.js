@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		VOTESNUM = response.data.length;
 
-		if(VOTESNUM >= 0){
+		if(VOTESNUM <= 0){
 			window.location.replace("/result_error");
 		}
 
