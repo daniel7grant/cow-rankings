@@ -30,14 +30,15 @@ app.post('/send', function(req, res){
 	body.stage = sw().stage;
 	body.week = sw().week;
 	mongo.connect(murl, function(err, client){
+		if(err) console.error(err);
 		const db = client.db(mdb);
 		const collection = db.collection('votes');
 		collection.remove({ipaddress : body.ipaddress, agent : body.agent, stage : body.stage, week : body.week}, function(err){
 			if(err) console.error(err);
-		});
-		collection.insert(body, function(err, result){
-			if(err) console.error(err);
-			client.close();
+			collection.insert(body, function(err, result){
+				if(err) console.error(err);
+				client.close();
+			});
 		});
 	});
 	res.sendFile(path.join(__dirname, 'public/thanks.html'));
@@ -52,8 +53,12 @@ app.get('/result', function(req, res){
 		&& 10*stage + week <= 10*sw().stage + sw().week){
 		res.sendFile(path.join(__dirname, 'public/result.html'));
 	}else{
-		res.sendFile(path.join(__dirname, 'public/result_error.html'));
+		res.redirect('/result_error');
 	}
+});
+
+app.get('/result_error', function(req, res){
+	res.sendFile(path.join(__dirname, 'public/result_error.html'));
 });
 
 // Votes REST API
@@ -62,9 +67,6 @@ votes(app);
 
 // Stageweek REST API
 app.get('/api/stageweek', function(req, res){
-	res.setHeader('Access-Control-Allow-Origin', '*');
-	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 	res.json(sw());
 });
 
