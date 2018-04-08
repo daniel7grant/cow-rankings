@@ -1,16 +1,22 @@
 import Sortable from 'sortablejs';
 import http from 'axios';
 import groupBy from 'lodash/groupBy';
+import find from 'lodash/find';
 import flatten from 'lodash/flatten';
 import map from 'lodash/map';
 import orderBy from 'lodash/orderBy';
 import TeamsTemplate from './teamstemplate.hbs';
 import MvpTemplate from './mvptemplate.hbs';
-import './theme.scss';
+import './theme.scss'; 
 
 var teamsdata;
 
 document.addEventListener('DOMContentLoaded', function () {
+
+	http.get('http://rankings.danielgrants.com/api/stageweek').then((response) =>{
+		document.getElementById('stageweek').innerHTML = 'Stage ' + response.data.stage + ' Week ' + response.data.week;
+	});
+
 	http.get('https://api.overwatchleague.com/teams').then((response) => {
 		teamsdata = orderBy(map(response.data.competitors, (team) => {
 			return {
@@ -27,16 +33,14 @@ document.addEventListener('DOMContentLoaded', function () {
 						name: player.player.name,
 						nationality: player.player.nationality,
 						team: team.competitor.abbreviatedName,
-						primaryColor: team.competitor.primaryColor,
-						secondaryColor: team.competitor.secondaryColor
+						primaryColor: colorFix(team.competitor).primaryColor,
+						secondaryColor: colorFix(team.competitor).secondaryColor
 					};
 				}),
-				primaryColor: team.competitor.primaryColor,
-				secondaryColor: team.competitor.secondaryColor
+				primaryColor: colorFix(team.competitor).primaryColor,
+				secondaryColor: colorFix(team.competitor).secondaryColor
 			};
 		}), 'name');
-
-		console.log(response.data.competitors);
 
 		document.getElementById('teams-sortable').innerHTML = TeamsTemplate({ teams: teamsdata });
 		Sortable.create(document.getElementById('teams-sortable'), { animation: 150 });
@@ -53,3 +57,29 @@ document.addEventListener('DOMContentLoaded', function () {
 		console.log(error);
 	});
 });
+
+function colorFix(team){
+	if(team.abbreviatedName === 'GLA')
+	{
+		return {
+			primaryColor : team.primaryColor,
+			secondaryColor : 'FFFFFF'
+		}
+	}
+	else if(team.abbreviatedName === 'SFS'){
+		return {
+			primaryColor : team.primaryColor,
+			secondaryColor : 'FFFFFF'
+		}
+	}
+	else if(team.abbreviatedName === 'LDN'){
+		return {
+			primaryColor : team.primaryColor,
+			secondaryColor : '38889c'
+		}
+	}
+	return {
+		primaryColor : team.primaryColor,
+		secondaryColor : team.secondaryColor
+	}
+}

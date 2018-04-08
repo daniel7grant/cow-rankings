@@ -1,0 +1,63 @@
+$ct-series-names: (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z) !default;
+$ct-series-colors: (
+  #d70206,
+  #f05b4f,
+  #f4c63d,
+  #d17905,
+  #453d3f,
+  #59922b,
+  #0544d3,
+  #6b0392,
+  #f05b4f,
+  #dda458,
+  #eacf7d,
+  #86797d,
+  #b2c326,
+  #d70206,
+  #f05b4f,
+  #f4c63d,
+  #d17905,
+  #453d3f,
+  #59922b,
+  #0544d3,
+  #6b0392,
+  #f05b4f,
+  #dda458,
+  #eacf7d,
+  #86797d,
+  #b2c326
+) !default;
+
+.ct-chart{
+
+
+	g.ct-series{
+
+		&:hover{
+			path.ct-slice-pie{
+				opacity: 0.75;
+			} 
+		}
+	}
+
+	.ct-label{
+		
+	}
+
+	.ct-bar-label {
+		text-anchor: middle;
+		alignment-baseline: hanging;
+		fill: white;
+		pointer-events: none;
+		font-size: 10px;
+	}
+
+	.ct-bar {
+		stroke-width: 16px;
+
+		&:hover{
+			opacity: 0.75;
+		}
+	}
+
+}

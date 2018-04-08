@@ -45,16 +45,42 @@ body{
 			display:block;
 		}
 	
-		form{
+		#main-form{
 			display:none;
 		}
 	}
 
-	h1{
+	&.minimal{
+		min-height: 0;
+	}
+
+	div.header{
+		min-height: 5*$teamfont;
 		color: #FFFFFF;
-		margin-top:0;
-		min-height: 2.5*$teamfont;
-		vertical-align: middle;
+		h1{
+			margin:0;
+			margin-bottom: $teampadd;
+			vertical-align: middle;
+		}
+		p#stageweek{
+			margin:0;
+			text-align: center;
+			flex: 1 0 auto;
+		}
+
+		.header-flex{
+			display: flex;
+			width:100%;
+			align-content: space-between;
+
+			a{
+				color: #FFFFFF;
+
+				&.disabled{
+					//display:none;
+				}
+			}
+		}
 	}
 
 	div.load-gif{
@@ -67,6 +93,21 @@ body{
 		img{}
 	}
 
+	div.centered{
+		margin: auto;
+		text-align: center;
+
+		p.note{
+			color: #808080;
+			font-size: 0.9em;
+			margin: 0.5em 1em;
+
+			a{
+				color: #808080;
+			}
+		}
+	}
+
 	form{
 		display:block;
 
@@ -75,7 +116,7 @@ body{
 		}
 
 		p.note{
-			color: #C0c0c0;
+			color: #808080;
 			font-size: 0.9em;
 			margin: 0.5em 1em;
 		}
