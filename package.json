@@ -9,8 +9,10 @@
   "author": "Daniel Grant (daniel7grant@gmail.com)",
   "license": "Beerware",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
+    "lodash": "^4.17.10",
     "moment": "^2.22.0",
     "mongodb": "^3.0.5",
     "useragent": "^2.3.0"
